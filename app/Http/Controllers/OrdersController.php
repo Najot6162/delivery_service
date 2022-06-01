@@ -71,7 +71,7 @@ class OrdersController extends Controller
         $order->status = $request->status;
 
         if ($order->save()) {
-            return new OrderResourse($order);
+            return "order status updated successfully";
         }
     }
 
