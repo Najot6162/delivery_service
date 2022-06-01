@@ -84,7 +84,7 @@ response -
             "total": 3
         }
     ]
-    4.Qaysi project nechta sotilganligi haqida malumotlar chqarauvchi api
+    4.Qaysi tovardan nechta sotilganligi haqida malumotlar chqarauvchi api
     
    get request - http://localhost:8001/api/sold-product-count
     
