@@ -25,9 +25,7 @@ class OrdersController extends Controller
         $productsArr = $products->map(function (Product $product) {
             $productObj = $product->toArray();
             $productObj['sold_count'] = $product->orders->count();
-            // if ($productObj['sold_count'] > 0) {
             return $productObj;
-            //}
         });
 
         return OrderResourse::collection($productsArr);
