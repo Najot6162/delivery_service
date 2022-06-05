@@ -21,7 +21,6 @@ class CreateOrdersTable extends Migration
             $table->string('courier_name');
             $table->string('address');
             $table->enum('status', ['tayyorlanmoqda', 'yetkazilmoqda', 'yetkazildi']);
-            $table->integer('product_id');
             $table->timestamps();
         });
     }

@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\order_product;
+use App\Models\orderProduct;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 
@@ -20,14 +22,17 @@ class CreateProductSeeder extends Seeder
             [
                 'name' => 'redmi note 9',
                 'category' => 'phone',
+                'price'=>15000
             ],
             [
                 'name' => 'hp probook 450 g5',
                 'category' => 'computer',
+                'price'=>36000
             ],
             [
                 'name' => 'Samsung A 72',
                 'category' => 'phone',
+                'price'=>18000
             ]
 
         ];
@@ -39,8 +44,7 @@ class CreateProductSeeder extends Seeder
               'phone_number'=>1234567,
               'courier_name'=>'anvar',
               'status'=>'tayyorlanmoqda',
-              'address'=>'tashkent',
-              'product_id'=>1
+              'address'=>'tashkent'
           ],
             [
                 'first_name'=>'vali',
@@ -49,7 +53,6 @@ class CreateProductSeeder extends Seeder
                 'courier_name'=>'anvar',
                 'status'=>'yetkazilmoqda',
                 'address'=>'tashkent',
-                'product_id'=>1
             ],
             [
                 'first_name'=>'sobr',
@@ -58,7 +61,6 @@ class CreateProductSeeder extends Seeder
                 'courier_name'=>'sanjar',
                 'status'=>'yetkazilmoqda',
                 'address'=>'fargona',
-                'product_id'=>2
             ],
             [
                 'first_name'=>'Sardor',
@@ -67,7 +69,6 @@ class CreateProductSeeder extends Seeder
                 'courier_name'=>'sanjar',
                 'status'=>'yetkazilmoqda',
                 'address'=>'fargona',
-                'product_id'=>3
             ],
             [
                 'first_name'=>'Davron',
@@ -76,7 +77,7 @@ class CreateProductSeeder extends Seeder
                 'courier_name'=>'anvar',
                 'status'=>'yetkazilmoqda',
                 'address'=>'fargona',
-                'product_id'=>3
+
             ],
             [
                 'first_name'=>'SaidAkbar',
@@ -85,7 +86,7 @@ class CreateProductSeeder extends Seeder
                 'courier_name'=>'sanjar',
                 'status'=>'yetkazilmoqda',
                 'address'=>'andijon',
-                'product_id'=>3
+
             ],
             [
                 'first_name'=>'Almardon',
@@ -94,7 +95,7 @@ class CreateProductSeeder extends Seeder
                 'courier_name'=>'sanjar',
                 'status'=>'yetkazilmoqda',
                 'address'=>'andijon',
-                'product_id'=>3
+
             ],
             [
                 'first_name'=>'Salim',
@@ -103,9 +104,30 @@ class CreateProductSeeder extends Seeder
                 'courier_name'=>'sanjar',
                 'status'=>'yetkazilmoqda',
                 'address'=>'fargona',
-                'product_id'=>2
+
             ]
         ];
+
+//        $order_product = [
+//          [
+//              'product_id'=>1,
+//              'order_id'=>1,
+//              'price'=>15000,
+//              'quantity'=>2
+//          ],
+//            [
+//                'product_id'=>2,
+//                'order_id'=>1,
+//                'price'=>2800,
+//                'quantity'=>4
+//            ],
+//            [
+//                'product_id'=>3,
+//                'order_id'=>2,
+//                'price'=>3000,
+//                'quantity'=>6
+//            ]
+//        ];
         foreach ($product as $key => $value) {
             Product::create($value);
         }
@@ -113,6 +135,8 @@ class CreateProductSeeder extends Seeder
         foreach ($order as $key => $value) {
             Order::create($value);
         }
-
+//        foreach ($order_product as $key => $value) {
+//           order_product::create($value);
+//        }
     }
 }

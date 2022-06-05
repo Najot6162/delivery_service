@@ -21,16 +21,8 @@ class OrdersController extends Controller
 
     public function soldProductCount()
     {
-        $products = Product::get();
-        $productsArr = $products->map(function (Product $product) {
-            $productObj = $product->toArray();
-            $productObj['sold_count'] = $product->orders->count();
-            // if ($productObj['sold_count'] > 0) {
-            return $productObj;
-            //}
-        });
-
-        return OrderResourse::collection($productsArr);
+        $products = Product::withSum('orders', 'order_product.quantity')->get();
+        return OrderResourse::collection($products);
     }
 
     public function soldCountryCount()
@@ -49,7 +41,6 @@ class OrdersController extends Controller
             $different_days = $start_date->diffForHumans($end_date);;
             $order[$i]->arrival_time = $different_days;
         }
-
         return OrderResourse::collection($order);
 
     }
@@ -60,7 +51,7 @@ class OrdersController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return OrderResourse
      */
     public function updateOrderStatus(Request $request, $id)
     {
