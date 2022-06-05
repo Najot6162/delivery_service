@@ -22,7 +22,7 @@ class OrdersController extends Controller
     public function soldProductCount()
     {
 
-        $products = Product::withSum('orders', 'order_product.quantity')->get();
+        $products = Product::has('orders')->withSum('orders', 'order_product.quantity')->get();
         return OrderResourse::collection($products);
     }
 
@@ -34,7 +34,7 @@ class OrdersController extends Controller
 
     public function showDeliveryOrders()
     {
-        $order = Order::with('products')->where('status', 'yetkazilmoqda')->orWhere('status', 'tayyorlanmoqda')->paginate(5);
+        $order = Order::with('products')->has('products')->where('status', 'yetkazilmoqda')->get();
         $current_date = Carbon::now()->toDateTimeString();
         for ($i = 0; $i < count($order); $i++) {
             $start_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order[$i]->updated_at);
