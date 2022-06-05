@@ -21,6 +21,7 @@ class OrdersController extends Controller
 
     public function soldProductCount()
     {
+
         $products = Product::withSum('orders', 'order_product.quantity')->get();
         return OrderResourse::collection($products);
     }
@@ -62,7 +63,7 @@ class OrdersController extends Controller
         $order->status = $request->status;
 
         if ($order->save()) {
-            return new OrderResourse($order);
+            return "order status updated successfully";
         }
     }
 
